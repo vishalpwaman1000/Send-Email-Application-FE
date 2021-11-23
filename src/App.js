@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<EmailSignIn/>} />
-          <Route exact path="/EmailForm" element={<EmailTemplat/>} />
+          <Route exact path="/SignIn" element={<EmailSignIn/>} />
+          <Route exact path="/" element={<EmailTemplat/>} />
         </Routes>
       </Router>
     </div>

@@ -74,10 +74,10 @@ export function EmailTemplat() {
             setmessageInfo(data.data.message)
           })
           .catch((error) => {
-            console.log(error.data)
+            console.log(error)
             setBackDrop(false)
             setopen(true)
-            setmessageInfo(error.data.message)
+            // setmessageInfo(error.data.message)
           })
       } else {
         console.log('Empty Subject')
