@@ -1,0 +1,72 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container{
+    width: 100%;
+    height: 100%;
+    @extend .center;
+    background-color: rgba(250, 255, 255, 0.904);
+
+    .SubContainer{
+        width: 500px;
+        height: 600px;
+        border: 0.5px solid lightgray;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 1px lightgray;
+        background-color: white;
+
+        .Header{
+            height: 8%;
+            width: 100%;
+            border: 0.5px solid lightgray;
+            border-radius: 10px 10px 0 0;
+            box-sizing: border-box;
+            background-color: #404040;
+            color: white;
+            font-size: Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .body{
+            height: 92%;
+            width: 100%;
+            border: 0.5px solid lightgray;
+            border-radius: 0px 0px 10px 10px;
+            box-sizing: border-box;
+            @extend .center;
+            flex-direction: column;
+
+            .Subbody{
+                width: 95%;
+                height: 88%;
+                // border: 0.5px solid lightgray;
+                display: flex;
+                flex-direction: column;
+
+                .text{
+                    margin: 8px;
+                }
+
+                .multiText{
+                //  border: 0.5px solid lightgray;
+                 padding: 10px;
+                }
+            }
+
+            .Buttons{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                .Send{
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

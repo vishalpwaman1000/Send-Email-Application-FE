@@ -1,0 +1,39 @@
+.EmailSignIn_Container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .SubContainer{
+        width: 400px;
+        height: 400px;
+        border: 0.5px solid lightgray;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 2px 10px 1px rgb(218, 217, 217);
+
+        .Header{
+            font-size: 30px;
+            font-weight: 600;
+            margin: 10px;
+        }
+
+        .TextFields{
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+
+            .Email{
+                margin: 10px;
+            }
+
+            .Password{
+                margin: 10px;
+            }
+        }
+    }
+}
