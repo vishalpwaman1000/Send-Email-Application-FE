@@ -1,72 +1,122 @@
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Container{
-    width: 100%;
-    height: 100%;
-    @extend .center;
-    background-color: rgba(250, 255, 255, 0.904);
+.Container {
+  width: 100%;
+  height: 100%;
+  @extend .center;
+  background-color: rgba(250, 255, 255, 0.904);
 
-    .SubContainer{
-        width: 500px;
-        height: 600px;
-        border: 0.5px solid lightgray;
-        border-radius: 10px;
-        box-shadow: 0 0 10px 1px lightgray;
-        background-color: white;
+  .SubContainer {
+    width: 600px;
+    height: 600px;
+    border: 0.5px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px lightgray;
+    background-color: white;
 
-        .Header{
-            height: 8%;
-            width: 100%;
-            border: 0.5px solid lightgray;
-            border-radius: 10px 10px 0 0;
-            box-sizing: border-box;
-            background-color: #404040;
-            color: white;
-            font-size: Helvetica, Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-        }
-
-        .body{
-            height: 92%;
-            width: 100%;
-            border: 0.5px solid lightgray;
-            border-radius: 0px 0px 10px 10px;
-            box-sizing: border-box;
-            @extend .center;
-            flex-direction: column;
-
-            .Subbody{
-                width: 95%;
-                height: 88%;
-                // border: 0.5px solid lightgray;
-                display: flex;
-                flex-direction: column;
-
-                .text{
-                    margin: 8px;
-                }
-
-                .multiText{
-                //  border: 0.5px solid lightgray;
-                 padding: 10px;
-                }
-            }
-
-            .Buttons{
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-
-                .Send{
-                    width: 100px;
-                }
-            }
-        }
+    .Header {
+      height: 8%;
+      width: 100%;
+      border: 0.5px solid lightgray;
+      border-radius: 10px 10px 0 0;
+      box-sizing: border-box;
+      background-color: #404040;
+      color: white;
+      font-size: Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
     }
+
+    .body {
+      height: 92%;
+      width: 100%;
+      border: 0.5px solid lightgray;
+      border-radius: 0px 0px 10px 10px;
+      box-sizing: border-box;
+      @extend .center;
+      flex-direction: column;
+
+      .Subbody {
+        width: 95%;
+        height: 90%;
+        // border: 0.5px solid lightgray;
+        display: flex;
+        flex-direction: column;
+
+        .text {
+          margin: 8px;
+        }
+
+        .multiText {
+          padding: 7px;
+        }
+
+        .EditingTool {
+          height: 20%;
+          width: 100%;
+          //   border: 0.5px solid lightgray;
+          @extend .center;
+
+          .Sub-Edit {
+            height: 90%;
+            width: 98%;
+            border-bottom: 0.5px solid lightgray;
+            box-shadow: 0px 4px 5px 0px rgb(0 0 0 / 14%),
+              0px 1px 10px 0px rgb(0 0 0 / 12%),
+              0px 2px 4px -1px rgb(0 0 0 / 20%);
+            display: flex;
+            @extend .center;
+
+            .Font-Style,
+            #simple-menu {
+              text-transform: none;
+            }
+
+            .Font-Size {
+            }
+
+            .TextColorFormat {
+            }
+
+            .TextColorFormat {
+              //   .simple-TextColorMenu {
+              //     .simple-TextColorMenuItem {
+              //       .A1,
+              //       .A2,
+              //       .A3,
+              //       .A4 {
+              //         height: 20px;
+              //         width: 20px;
+              //         border: 0.5px solid lightgrey;
+              //       }
+              //     }
+              //   }
+            }
+          }
+        }
+      }
+
+      .Buttons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 6px 0 0 0;
+        .Send {
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+
+.A1 {
+  height: 20px;
+  width: 20px;
+  border: 0.5px solid lightgrey;
+  margin: 1px;
 }
