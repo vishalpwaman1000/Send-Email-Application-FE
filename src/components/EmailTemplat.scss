@@ -52,17 +52,16 @@
                     margin: 8px;
                 }
 
-                .multiText,
-                #multiText {
+                .multiText {
                     padding: 7px;
                     width: 568px;
                     height: 356px;
                     // border: 0.5px solid lightgray;
                     display: flex;
-                    align-items: start;
+                    align-items: flex-start;
                     position: sticky;
-                    
-                    .MuiInputBase-inputMultiline{
+
+                    .MuiInputBase-inputMultiline {
                         height: 100%;
                     }
                 }

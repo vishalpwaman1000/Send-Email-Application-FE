@@ -1,20 +1,16 @@
-import './App.css';
-import { BrowserRouter as  Router,Routes, Route } from "react-router-dom";
-// import { Switch } from "react-router-dom";
-import EmailSignIn from "./components/EmailSignIn.js";
-import EmailTemplat from "./components/EmailTemplat.js";
+import './App.css'
+// import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import EmailTemplat from './components/EmailTemplat.js'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <BrowserRouter>
         <Routes>
-          <Route exact path="/SignIn" element={<EmailSignIn/>} />
-          <Route exact path="/" element={<EmailTemplat/>} />
+          <Route exact path="/" element={<EmailTemplat />} />
         </Routes>
-      </Router>
+      </BrowserRouter> */}
+      <EmailTemplat />
     </div>
-  );
+  )
 }
-
-export default App;

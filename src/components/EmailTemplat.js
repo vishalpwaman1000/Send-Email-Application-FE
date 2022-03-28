@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './EmailTemplat.scss'
 import UserServices from '../services/UserServices'
-import { CloseIcon } from '@material-ui/icons/Close'
+import CloseIcon from '@material-ui/icons/Close'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import TextFieldsIcon from '@material-ui/icons/TextFields'
 import FormatBoldIcon from '@material-ui/icons/FormatBold'
@@ -22,7 +22,6 @@ import {
   Menu,
   MenuItem,
 } from '@material-ui/core'
-import { SwitchVideo } from '@material-ui/icons'
 
 const userService = new UserServices()
 export const validEmail = new RegExp(
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export function EmailTemplat() {
+export default function EmailTemplat() {
   const classes = useStyles()
 
   const [To, setTo] = useState('')
@@ -76,11 +75,6 @@ export function EmailTemplat() {
     console.log('Event Value : ', event.currentTarget)
     setAnchorEl(event.currentTarget)
   }
-
-  // const SetFontStyle = (key) => {
-  //   console.log('Font Style : ', key)
-  //   setToFunctinality({ ...ToFunctionality, FontStyle: key })
-  // }
 
   const handleClick2 = (event) => {
     setAnchorE2(event.currentTarget)
@@ -235,6 +229,63 @@ export function EmailTemplat() {
     console.log('To : ' + To + ' Subject : ' + Subject + ' Body : ' + Body)
   }
 
+  const CreateBody = (Body) => {
+    let Value = ''
+    // Strike : true and Underline : true
+    if (ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
+      Value = 'underline line-through'
+    }
+    // Strike : true and Underline : false
+    else if (ToFunctionalityFlag.Strike && !ToFunctionalityFlag.Underline) {
+      Value = 'line-through'
+    }
+    // Strike : false and Underline : true
+    else if (!ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
+      Value = 'underline'
+    }
+    // Strike : false and Underline : false
+    else {
+      Value = 'none'
+    }
+
+    return (
+      `<html>
+              <head>
+              <style>
+              .bodys{
+                font-style:` +
+      ToFunctionality.Italic +
+      `;
+                font-family: ` +
+      ToFunctionality.FontStyle +
+      `;
+                font-size: ` +
+      ToFunctionality.FontSize +
+      `;
+                color: ` +
+      ToFunctionality.FontColor +
+      `;
+                font-weight: ` +
+      ToFunctionality.Bold +
+      ` ; 
+      text-decoration: ` +
+      Value +
+      `;
+              }
+           </style>
+              </head>
+              <body>
+                    <div class="bodys">
+                    ` +
+      Body +
+      `
+                    </div>
+              </body>
+            </html>
+           `
+    )
+  }
+
   const handleSubmit = () => {
     console.log('handle Submit Calling')
     if (To.length > 0) {
@@ -245,12 +296,12 @@ export function EmailTemplat() {
         const data = {
           emailId: To.trim(),
           subject: Subject.trim(),
-          body: Body,
+          body: CreateBody(Body),
         }
         userService
           .SendEmail(data)
           .then((data) => {
-            console.log(data.data)
+            console.log(data)
             setBackDrop(false)
             setopen(true)
             setmessageInfo(data.data.message)
@@ -653,7 +704,9 @@ export function EmailTemplat() {
                   </IconButton>
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <div className="EditingTool"></div>
+            )}
           </div>
           <div className="Buttons">
             <Button
@@ -703,4 +756,3 @@ export function EmailTemplat() {
     </div>
   )
 }
-export default EmailTemplat
