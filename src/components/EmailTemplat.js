@@ -71,6 +71,11 @@ export default function EmailTemplat() {
     setToFlag(true)
   }
 
+  const ToggleHandleTo = (e) => {
+    console.log('Toggle Handle To')
+    setToFlag(false)
+  }
+
   const handleClick = (event) => {
     console.log('Event Value : ', event.currentTarget)
     setAnchorEl(event.currentTarget)
@@ -362,6 +367,9 @@ export default function EmailTemplat() {
               value={Subject}
               onChange={(e) => {
                 handleChanges(e)
+              }}
+              onClick={(e) => {
+                To === '' && ToggleHandleTo(e)
               }}
             />
             <InputBase
