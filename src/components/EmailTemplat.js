@@ -161,11 +161,17 @@ export default function EmailTemplat() {
 
   const handleClickToClear = (e) => {
     console.log('Clear All text Functinality')
-    setToFunctinality({ ...ToFunctionality, Underline: 'none' })
-    setToFunctinality({ ...ToFunctionality, Strike: 'none' })
-    setToFunctinality({ ...ToFunctionality, Italic: 'initial' })
-    setToFunctinality({ ...ToFunctionality, Bold: '400' })
-    setToFunctinality({ ...ToFunctionality, fontFamily: 'Roboto' })
+    setToFunctinality({
+      ...ToFunctionality,
+      Underline: 'none',
+      Strike: 'none',
+      Italic: 'initial',
+      Bold: '400',
+      FontStyle: 'Roboto',
+      FontSize:'16px',
+      FontColor: 'Black',
+    })
+
     setToFunctinalityFlag({
       ...ToFunctionalityFlag,
       Underline: false,
@@ -315,7 +321,7 @@ export default function EmailTemplat() {
             console.log(error)
             setBackDrop(false)
             setopen(true)
-            // setmessageInfo(error.data.message)
+            setmessageInfo('Something Went Wrong.')
           })
       } else {
         console.log('Empty Subject')
