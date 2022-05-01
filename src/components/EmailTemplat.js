@@ -60,8 +60,8 @@ export default function EmailTemplat() {
   })
 
   const [ToFunctionalityFlag, setToFunctinalityFlag] = React.useState({
-    Bold: true,
-    Italic: true,
+    Bold: false,
+    Italic: false,
     Underline: false,
     Strike: false,
     TextFeatureOn: false,
@@ -168,7 +168,7 @@ export default function EmailTemplat() {
       Italic: 'initial',
       Bold: '400',
       FontStyle: 'Roboto',
-      FontSize:'16px',
+      FontSize: '16px',
       FontColor: 'Black',
     })
 
@@ -176,8 +176,8 @@ export default function EmailTemplat() {
       ...ToFunctionalityFlag,
       Underline: false,
       Strike: false,
-      Italic: true,
-      Bold: true,
+      Italic: false,
+      Bold: false,
     })
   }
 
@@ -343,6 +343,22 @@ export default function EmailTemplat() {
     })
   }
 
+  const Textdecoration = () => {
+    if (ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
+      // Strike : true && Underline : true
+      return 'underline line-through'
+    } else if (!ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
+      // Strike : false && Underline : true
+      return 'underline'
+    } else if (ToFunctionalityFlag.Strike && !ToFunctionalityFlag.Underline) {
+      // Strike : true && Underline : false
+      return 'line-through'
+    } else {
+      // Strike : false && Underline : false
+      return ''
+    }
+  }
+
   return (
     <div className="Container">
       <div className="SubContainer">
@@ -389,44 +405,14 @@ export default function EmailTemplat() {
                 handleChanges(e)
               }}
               style={
-                // Strike : true && Underline : true
-                ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline
-                  ? {
-                      fontWeight: ToFunctionality.Bold,
-                      fontStyle: ToFunctionality.Italic,
-                      fontFamily: ToFunctionality.FontStyle,
-                      color: ToFunctionality.FontColor,
-                      fontSize: ToFunctionality.FontSize,
-                      textDecoration: 'underline line-through',
-                    }
-                  : // Strike : false && Underline : true
-                  !ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline
-                  ? {
-                      fontWeight: ToFunctionality.Bold,
-                      fontStyle: ToFunctionality.Italic,
-                      fontFamily: ToFunctionality.FontStyle,
-                      color: ToFunctionality.FontColor,
-                      fontSize: ToFunctionality.FontSize,
-                      textDecoration: 'underline',
-                    }
-                  : // Strike : true && Underline : false
-                  ToFunctionalityFlag.Strike && !ToFunctionalityFlag.Underline
-                  ? {
-                      fontWeight: ToFunctionality.Bold,
-                      fontStyle: ToFunctionality.Italic,
-                      fontFamily: ToFunctionality.FontStyle,
-                      color: ToFunctionality.FontColor,
-                      fontSize: ToFunctionality.FontSize,
-                      textDecoration: 'line-through',
-                    }
-                  : // Strike : false && Underline : false
-                    {
-                      fontWeight: ToFunctionality.Bold,
-                      fontStyle: ToFunctionality.Italic,
-                      fontFamily: ToFunctionality.FontStyle,
-                      color: ToFunctionality.FontColor,
-                      fontSize: ToFunctionality.FontSize,
-                    }
+                {
+                  fontWeight: ToFunctionality.Bold,
+                  fontStyle: ToFunctionality.Italic,
+                  fontFamily: ToFunctionality.FontStyle,
+                  color: ToFunctionality.FontColor,
+                  fontSize: ToFunctionality.FontSize,
+                  textDecoration: Textdecoration(),
+                }
               }
             />
             {ToFunctionalityFlag.TextFeatureOn ? (
@@ -512,7 +498,7 @@ export default function EmailTemplat() {
                     </Menu>
                   </div>
                   <IconButton
-                    className={!ToFunctionalityFlag.Bold ? 'IconButtonOn' : ''}
+                    className={ToFunctionalityFlag.Bold ? 'IconButtonOn' : ''}
                     onClick={(e) => {
                       handleClickToBold(e)
                     }}
@@ -520,9 +506,7 @@ export default function EmailTemplat() {
                     <FormatBoldIcon />
                   </IconButton>
                   <IconButton
-                    className={
-                      !ToFunctionalityFlag.Italic ? 'IconButtonOn' : ''
-                    }
+                    className={ToFunctionalityFlag.Italic ? 'IconButtonOn' : ''}
                     onClick={handleClickToItalic}
                   >
                     <FormatItalicIcon />
