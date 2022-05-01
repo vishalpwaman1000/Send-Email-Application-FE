@@ -92,7 +92,7 @@ export default function EmailTemplat() {
       ...ToFunctionalityFlag,
       Bold: !ToFunctionalityFlag.Bold,
     })
-    if (ToFunctionalityFlag.Bold) {
+    if (!ToFunctionalityFlag.Bold) {
       console.log('Bold true')
       Value = '600'
     } else {
@@ -110,7 +110,7 @@ export default function EmailTemplat() {
       ...ToFunctionalityFlag,
       Italic: !ToFunctionalityFlag.Italic,
     })
-    if (ToFunctionalityFlag.Italic) {
+    if (!ToFunctionalityFlag.Italic) {
       console.log('Italic true')
       Value = 'italic'
     } else {
@@ -132,7 +132,7 @@ export default function EmailTemplat() {
       ...ToFunctionalityFlag,
       Strike: !ToFunctionalityFlag.Strike,
     })
-    if (ToFunctionalityFlag.Strike) {
+    if (!ToFunctionalityFlag.Strike) {
       console.log('Strike true')
       Value = 'line-through'
     } else {
@@ -149,7 +149,7 @@ export default function EmailTemplat() {
       ...ToFunctionalityFlag,
       Underline: !ToFunctionalityFlag.Underline,
     })
-    if (ToFunctionalityFlag.Underline) {
+    if (!ToFunctionalityFlag.Underline) {
       console.log('Underline true')
       Value = 'underline'
     } else {
@@ -346,16 +346,16 @@ export default function EmailTemplat() {
   const Textdecoration = () => {
     if (ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
       // Strike : true && Underline : true
-      return 'underline line-through'
+      return ToFunctionality.Underline + ' ' + ToFunctionality.Strike
     } else if (!ToFunctionalityFlag.Strike && ToFunctionalityFlag.Underline) {
       // Strike : false && Underline : true
-      return 'underline'
+      return ToFunctionality.Underline
     } else if (ToFunctionalityFlag.Strike && !ToFunctionalityFlag.Underline) {
       // Strike : true && Underline : false
-      return 'line-through'
+      return ToFunctionality.Strike
     } else {
       // Strike : false && Underline : false
-      return ''
+      return 'none'
     }
   }
 
@@ -404,16 +404,15 @@ export default function EmailTemplat() {
               onChange={(e) => {
                 handleChanges(e)
               }}
-              style={
-                {
-                  fontWeight: ToFunctionality.Bold,
-                  fontStyle: ToFunctionality.Italic,
-                  fontFamily: ToFunctionality.FontStyle,
-                  color: ToFunctionality.FontColor,
-                  fontSize: ToFunctionality.FontSize,
-                  textDecoration: Textdecoration(),
-                }
-              }
+              style={{
+                fontWeight: ToFunctionality.Bold,
+                fontStyle: ToFunctionality.Italic,
+                fontFamily: ToFunctionality.FontStyle,
+                color: ToFunctionality.FontColor,
+                fontSize: ToFunctionality.FontSize,
+                textDecoration: Textdecoration(),
+                // ToFunctionality.Underline + ' ' + ToFunctionality.Strike,
+              }}
             />
             {ToFunctionalityFlag.TextFeatureOn ? (
               <div className="EditingTool">
