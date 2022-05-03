@@ -530,6 +530,7 @@ export default function EmailTemplat() {
                       onClose={handleCloseMenu3}
                     >
                       <div
+                        className="Color-Header"
                         style={{
                           fontSize: '14px',
                           fontWeight: '600',
@@ -541,6 +542,7 @@ export default function EmailTemplat() {
                       >
                         <div>Text Color</div>
                         <div
+                          className="LeadColor"
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
